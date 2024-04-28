@@ -33,7 +33,8 @@ public class AssemblyCodeDumper implements CodeHook, TraceHook {
 
         Memory memory = emulator.getMemory();
         if (begin > end) {
-            maxLengthLibraryName = memory.getMaxLengthLibraryName().length();
+            String name = memory.getMaxLengthLibraryName();
+            maxLengthLibraryName = name != null ? name.length() : 0;
         } else {
             int value = 0;
             for (Module module : memory.getLoadedModules()) {
